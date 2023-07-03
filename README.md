@@ -1,2 +1,2 @@
 # Leet_Code
-This repo will contain all the problems I solved in LeetCode
+This repo will contain all the problems I have solved in LeetCode
