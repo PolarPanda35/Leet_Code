@@ -1,17 +1,28 @@
+Intuition
+The given problem tells that we can safely assume atleast half of the array is filled with same element
+
+Approach
+1.) Sort the array from ascending order.
+Reason
+That way n/2th element will definetly be the majority element as atleast half the element belongs to majority
+
+2.)Return the the n/2th element of the array
+
+Complexity
+Time complexity:
+Worst case for sort() function in C++ is O(nlog(n))
+
+Space complexity:
+The space complexity depends on the number of input so it's O(n)
+
+Code
+```
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        for(int i = 0; i < nums.size(); i++){
-            int count = 0;
-            for(int j = 0; j < nums.size(); j++){
-                if(nums[j] == nums[i]){
-                    count++;
-                } 
-                if (count == nums.size()/2){
-                    return nums[j];
-                }
-            }
-        }
-        return 0;
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        return nums[n/2];
     }
 };
+```
