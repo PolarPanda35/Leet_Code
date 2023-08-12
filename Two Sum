@@ -1,0 +1,83 @@
+Intuition
+Two find both the numbers we can use simple mathematics formaula
+
+Target = Element1 + Element2
+
+#1 Approach - Brute Force Method
+1.) Create a Nested Loop (of two loops)
+2.) First Loop should be from i = 0 -> i < nums.size()
+3.) Second Loop should be from j = i+1 -> j < nums.size()
+4.) Now use condition Statement to check if
+
+target = nums[i] + nums[j]
+
+5.) If true we return the index of two element else we return {} if we don't find anything
+
+Reason
+We are checking if (target = the sum of any two elemnt) in second loop because it will be finished before loop one that way we can check if first element + any other element after it = target and then check if second element + any other element after it = target till we find a soln.
+
+Complexity
+Time complexity: O(N^2)
+We are using 2 loops due to which elements are being input N times for loop1 and N times for loop 2
+there O(N)*O(N) = O(N^2)
+
+Space complexity: O(1)
+We are not inputing any extra elements therefore it stores the initial space
+
+Code
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for(int i = 0; i < nums.size(); i++){
+            for(int i = i+1; i < nums.size(); i++){
+                if(nums[i]+nums[i]==target){
+                    return {i, i};
+                }
+            }
+        }
+        return {};//No soln
+    }
+};
+
+Time Complexity = O(n^2)
+Space Complexity = O(1)
+#2 Approach - Time Optimized Method
+1.) Create an Unordered Map to store index - element pair
+2.) Create a Loop from i = 0 -> i < nums.size() running through through array nums
+3.) Create a data type to finds the other complementary number through formula
+
+Complementary Number = target - nums[i]
+
+4.) Store the index-element pair in the form of
+
+twoSum[nums[i]] = i;
+
+5.) Now use condition Statement to check if the complementary element exists
+5.) If it exists we return the index of two element else we return {} if we don't find anything reutrn empty array
+
+Reason
+In the given code we will check the condition first and and then add index-element pair in unoredered map as if we do it in the opsite order then when we will add first element during that time second element wouldn't be added so we might risk leaving an element (especially if only two elements are there in the array)
+
+Complexity
+Time complexity: O(N)
+We are using 1 loops due to which elements are being input N times
+
+Space complexity: O(N)
+We are inputing all the elements from the given array to an created map therefore using extra space
+
+Code
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> twoSum;
+        for(int i = 0; i < nums.size();i++){
+            int complementNum = target - nums[i];
+            if(twoSum.count(complementNum) && twoSum[complementNum] != i){//Checking if it exists
+                return {twoSum[complementNum], i};
+            }
+            twoSum[nums[i]] = i;//Adding Key-value pairs        
+
+        }
+        return {};
+    }
+};
