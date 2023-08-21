@@ -8,8 +8,8 @@ If smaller Roman Digit is present at left then -> Sum - Smaller Roman Digit
 If larger Roman Digit is present at left then -> Sum + Smaller Roman Digit
 
 Complexity
-Time complexity: O(1)
-Time Complexity is O(1) as none of the value depends on the user input rather than that it depends on size of string
+Time complexity: O(n)
+Time Complexity is O(n) as we need to iterate all the elements of the string
 
 Space complexity: O(1)
 Space Complexity of an unordered map can be O(1) as we use constant space is tken by the unordered map
