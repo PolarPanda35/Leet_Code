@@ -1,0 +1,39 @@
+Intuition
+To learn how to convert Roman Numerals to Natural can learn form here -> https://www.cuemath.com/numbers/roman-numerals/
+
+Approach
+Create an Inter Sum = 0
+In two adjacent Roman Digit:
+If smaller Roman Digit is present at left then -> Sum - Smaller Roman Digit
+If larger Roman Digit is present at left then -> Sum + Smaller Roman Digit
+
+Complexity
+Time complexity: O(1)
+Time Complexity is O(1) as none of the value depends on the user input rather than that it depends on size of string
+
+Space complexity: O(1)
+Space Complexity of an unordered map can be O(1) as we use constant space is tken by the unordered map
+
+Code
+class Solution {
+public:
+    int romanToInt(string s) {
+        int number = 0;
+        unordered_map <char,int> romanList;
+        romanList['I'] = 1;
+        romanList['V'] = 5;
+        romanList['X'] = 10;
+        romanList['L'] = 50;
+        romanList['C'] = 100;
+        romanList['D'] = 500;
+        romanList['M'] = 1000;
+        for(int i = 0; i < s.size(); i++){
+            if(romanList[s[i]] >= romanList[s[i+1]]){
+                number += romanList[s[i]];
+            } else {
+                number -= romanList[s[i]];
+            }
+        }
+        return number;
+    }
+};
