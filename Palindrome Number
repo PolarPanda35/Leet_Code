@@ -1,0 +1,30 @@
+Intuition
+To create an integer in reverse order
+
+Approach
+1.) Convert integer to string
+2.) Create another string and initialize it to the recently converted int to string
+3.) Check if both the string are eqaul
+4.) Print output wrt the given result
+
+Complexity
+Time complexity: O(n)
+Time Complexity of the given function depends on reverse function which is O(n)
+
+Space complexity: O(1)
+Space complexity of the given function is constant as their is no extra data entered by user
+
+Code
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        string str = to_string(x);
+        string reverseStr = str;
+        reverse(reverseStr.begin(), reverseStr.end());
+        if (str == reverseStr) {
+            return true;
+        } else {
+            return false;
+        }        
+    }
+};
