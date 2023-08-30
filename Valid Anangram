@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        unordered_map <char, int> anangram;
+        for(auto x : s){
+            anangram[x]++;//considering we are using C++ 17 as only there value will be zero if nothing is there
+        }
+        for(auto x : t){
+            anangram[x]--;
+        }
+        for(auto x : anangram){
+            if(x.second != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+/*
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        sort(s.begin(), t.end());
+        sort(t.begin(), t.end());
+        return s == t;
+    }
+};
+*/
